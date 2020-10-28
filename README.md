@@ -1,6 +1,4 @@
-# Venus
-
-A landing page template.
+# Gathr.io Landing Page
 
 * [Getting started](#getting-started)
 
