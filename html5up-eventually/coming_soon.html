@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Gathr.io Sign-up</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+			<div class = "direction">
+				<a href="../index.html">
+					<i class="fa fa-angle-double-left" style="font-size:48px;color:#1cb495;display:block;"></i>
+				</a>
+			</div>
+		
+		<!-- Header -->
+			<header id="header">
+				<h1>Gathr.io Waitlist</h1>
+				<p>We're excited to launch V1 of Gathr.<br>Enter your email below for updates on our progress.</p>
+			</header>
+
+		<!-- Signup Form -->
+			<form id="signup-form" action="https://formspree.io/f/mnqovqkk" method="POST">
+				<input type="email" name="email" id="email" placeholder="Email Address" />
+				<input type="submit" value="Sign Up" id="form-submit"/>
+				<p id="my-form-status"></p>
+			</form>
+		<!-- Footer -->
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+					<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Gathr.io.</li><li>All Rights Reserved.</a></li>
+				</ul>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/main.js"></script>
+			<script>
+				window.addEventListener("DOMContentLoaded", function() {
+			  
+				  // get the form elements defined in your form HTML above
+				  
+				  var form = document.getElementById("signup-form");
+				  var button = document.getElementById("form-submit");
+				  var status = document.getElementById("my-form-status");
+			  
+				  // Success and Error functions for after the form is submitted
+				  
+				  function error() {
+					status.innerHTML = "Oops! There was a problem. Your email was not submitted. Please try again later.";
+				  }
+			  
+				  // handle the form submission event
+			  
+				  form.addEventListener("submit", function(ev) {
+					ev.preventDefault();
+					var data = new FormData(form);
+					ajax(form.method, form.action, data, success, error);
+				  });
+				});
+				
+				// helper function for sending an AJAX request
+			  
+				function ajax(method, url, data, success, error) {
+				  var xhr = new XMLHttpRequest();
+				  xhr.open(method, url);
+				  xhr.setRequestHeader("Accept", "application/json");
+				  xhr.onreadystatechange = function() {
+					if (xhr.readyState !== XMLHttpRequest.DONE) return;
+					if (xhr.status === 200) {
+					  success(xhr.response, xhr.responseType);
+					} else {
+					  error(xhr.status, xhr.response, xhr.responseType);
+					}
+				  };
+				  xhr.send(data);
+				}
+			  </script>
+	</body>
+</html>
