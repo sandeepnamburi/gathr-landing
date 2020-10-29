@@ -52,7 +52,12 @@
 				  var status = document.getElementById("my-form-status");
 			  
 				  // Success and Error functions for after the form is submitted
-				  
+				  function success() {
+					form.reset();
+					button.style = "display: none ";
+					status.innerHTML = "";
+				  }
+
 				  function error() {
 					status.innerHTML = "Oops! There was a problem. Your email was not submitted. Please try again later.";
 				  }
